@@ -10,13 +10,12 @@
    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="estiloUsuario.css" rel="stylesheet" type="text/css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+    <link href="Css/estiloUsuario.css" rel="stylesheet" type="text/css"/>
     <title>DashBoard 2</title>
 </head>
-
 <body>
-
+    
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
@@ -35,6 +34,7 @@
                 <a href="#" class="logout">
                     <i class='bx bx-log-out-circle'></i>
                     Logout
+                    ${email}
                 </a>
             </li>
         </ul>
@@ -67,8 +67,7 @@
 
 
     </div>
-
-    <script src="index.js" type="text/javascript"></script>
+    <script src="Js/indexUsuario.js" type="text/javascript"></script>
 </body>
 
 </html>

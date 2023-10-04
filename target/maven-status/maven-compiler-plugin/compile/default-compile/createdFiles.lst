@@ -1,3 +1,9 @@
-util\ConexionBD.class
-com\mycompany\autopartsrework\resources\JavaEE8Resource.class
+ModeloVO\UsuarioVO.class
 com\mycompany\autopartsrework\JAXRSConfiguration.class
+Controladores\UsuarioControlador.class
+Controladores\ControladorUsuario.class
+util\ConexionBD.class
+util\Validar.class
+Controladores\Sesiones.class
+ModeloDAO\UsuarioDAO.class
+com\mycompany\autopartsrework\resources\JavaEE8Resource.class

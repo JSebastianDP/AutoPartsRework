@@ -22,14 +22,14 @@ public class ConexionBD {
         driver ="com.mysql.jdbc.Driver";
         userDB="root";
         passwordDB="";
-        database="autoparts";
+        database="autopartsrework";
         urlDB="jdbc:mysql://localhost:3306/"+database;
         
         //3 - Conectarse
+            System.out.println("Conectando a la base de datos " + database + "...");
         try {
             Class.forName(driver).newInstance();
             conexion = DriverManager.getConnection(urlDB, userDB, passwordDB);
-            System.out.println("Conectando a la base de datos " + database + "...");
             if(conexion != null){
                 System.out.println("Conexion correcta ");
             }
