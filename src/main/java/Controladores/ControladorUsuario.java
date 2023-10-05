@@ -23,12 +23,10 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ControladorUsuario", urlPatterns = {"/ControladorUsuario"})
 public class ControladorUsuario extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        
         String id_usuario = request.getParameter("id_usuario");
         String email = request.getParameter("txtCorreo");
         String clave_usuario = request.getParameter("txtPass");
@@ -43,48 +41,46 @@ public class ControladorUsuario extends HttpServlet {
         UsuarioVO usuVO = null;
         UsuarioDAO usuDAO = new UsuarioDAO(usuVO);
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        
+
         switch (opcion) {
             case 1:
                 if (request.getParameter("txtCorreo").equals("") || request.getParameter("txtPass").equals("")) {
                     request.getRequestDispatcher("DashBoardUsuario/index.jsp").forward(request, response);
                 } else {
-                    usuVO = usuDAO.login(email, clave_usuario);
                     UsuarioVO usuVo = null;
                     UsuarioDAO usuDAo = new UsuarioDAO(usuVo);
                     usuVO = usuDAo.login(email, clave_usuario);
                     if (usuVO != null) {
-
+                        String nombreUsuario = usuVO.getNombre_usuario(); // Reemplaza esto con la forma en que obtienes el nombre del usuario
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("UsuarioVO", usuVO);
                         sesion.setAttribute("email", email);
                         request.getRequestDispatcher("DashBoardUsuario/index.jsp").forward(request, response);
-
                     } else {
                         request.getRequestDispatcher("error.jsp").forward(request, response);
                     }
                 }
-                
+                break;
+
             case 2:
                 nombre = "null";
                 apellido = "null";
                 tdoc = "null";
                 documento = "null";
                 telefono = "null";
-                direccion= "null";
-                        
-                UsuarioVO usuarioVO = new UsuarioVO(id_usuario,email, clave_usuario,estado_usuario,nombre, apellido,tdoc,documento,telefono,direccion,id_rol_fk );
+                direccion = "null";
+
+                UsuarioVO usuarioVO = new UsuarioVO(id_usuario, email, clave_usuario, estado_usuario, nombre, apellido, tdoc, documento, telefono, direccion, id_rol_fk);
                 UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
+
                 if (usuarioDAO.agregarRegistro()) {
-                request.setAttribute("mensajeExito", "El usuario Se registro correctamente");
-                request.getRequestDispatcher("DashBoardUsuario/index.jsp").forward(request, response);
+                    request.setAttribute("mensajeExito", "Usuario registrado correctamente, ahora puede iniciar sesión con sus credenciales");
                 } else {
-                    request.setAttribute("mensajeError", "El usuario NO se registro correctamente");
+                    request.setAttribute("mensajeError", "El usuario NO se registró correctamente");
                 }
                 request.getRequestDispatcher("login.jsp").forward(request, response);
-                
-                
-                
+                break;
+
         }
     }
 

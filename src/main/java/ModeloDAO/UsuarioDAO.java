@@ -25,7 +25,6 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
     private PreparedStatement puente;
     private boolean operacion = false;
     private String sql;
-    private boolean operacion2 = false;
     ConexionBD con = new ConexionBD();
     int r = 0;
     int rol = 2;
@@ -106,7 +105,7 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
 
             }
         }
-        return operacion2;
+        return operacion;
 
     }
 

@@ -65,6 +65,16 @@
                 </div>
             </div>
         </div>
+        
+    <%
+                                                    if (request.getAttribute("mensajeError") != null) {%>
+                                                ${mensajeError}
+                                                <%
+                                                } else {%>
+                                                ${mensajeExito}
+                                                <%
+                                                    }
+                                                %>
         <script src="estilos/jsLogin.js" type="text/javascript"></script>
     </body>
     
