@@ -20,7 +20,7 @@
 
         <div class="container" id="container">
             <div class="form-container sign-up">
-                <form>
+                <form method="post" action="ControladorUsuario">
                     <h1>Crear cuenta</h1>
                     <div class="social-icons">
                         <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -29,10 +29,9 @@
                         <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                     </div>
                     <span>Usa tu correo para iniciar sesión</span>
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <button>Registrarse</button>
+                    <input type="email" placeholder="Email" name="txtCorreo">
+                    <input type="password" placeholder="Password" name="txtPass">
+                    <button value="2" name="opcion">Registrarse</button>
                 </form>
             </div>
             <div class="form-container sign-in">

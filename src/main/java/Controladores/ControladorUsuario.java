@@ -8,6 +8,7 @@ import ModeloDAO.UsuarioDAO;
 import ModeloVO.UsuarioVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.jms.MessageEOFException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,6 +64,27 @@ public class ControladorUsuario extends HttpServlet {
                         request.getRequestDispatcher("error.jsp").forward(request, response);
                     }
                 }
+                
+            case 2:
+                nombre = "null";
+                apellido = "null";
+                tdoc = "null";
+                documento = "null";
+                telefono = "null";
+                direccion= "null";
+                        
+                UsuarioVO usuarioVO = new UsuarioVO(id_usuario,email, clave_usuario,estado_usuario,nombre, apellido,tdoc,documento,telefono,direccion,id_rol_fk );
+                UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
+                if (usuarioDAO.agregarRegistro()) {
+                request.setAttribute("mensajeExito", "El usuario Se registro correctamente");
+                request.getRequestDispatcher("DashBoardUsuario/index.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "El usuario NO se registro correctamente");
+                }
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                
+                
+                
         }
     }
 

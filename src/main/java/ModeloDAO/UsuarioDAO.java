@@ -12,25 +12,28 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionBD;
+import util.Usuario;
 
 /**
  *
  * @author Sebastian Diaz
  */
-public class UsuarioDAO extends ConexionBD {
+public class UsuarioDAO extends ConexionBD implements Usuario {
 
     private Connection conexion;
     private ResultSet mensajero;
     private PreparedStatement puente;
     private boolean operacion = false;
     private String sql;
+    private boolean operacion2 = false;
     ConexionBD con = new ConexionBD();
     int r = 0;
-    
-    String id_usuario="", email="", clave_usuario="", estado_usuario="", nombre="", apellido="", tdoc="",documento="", telefono="",direccion="",id_rol_fk="";
+    int rol = 2;
+
+    String id_usuario = "", email = "", clave_usuario = "", estado_usuario = "", nombre = "", apellido = "", tdoc = "", documento = "", telefono = "", direccion = "", id_rol_fk = "";
 
     public UsuarioDAO(UsuarioVO usuVO) {
-         super();
+        super();
         try {
             conexion = this.obtenerConexion();
             id_usuario = usuVO.getId_usuario();
@@ -48,9 +51,10 @@ public class UsuarioDAO extends ConexionBD {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
 
         }
-        
-    }    
-        public UsuarioVO login(String email, String clave_usuario) {
+
+    }
+
+    public UsuarioVO login(String email, String clave_usuario) {
         UsuarioVO usuVO = null;
 
         sql = "Select * from usuario where email = ? AND clave_usuario = ?";
@@ -66,7 +70,7 @@ public class UsuarioDAO extends ConexionBD {
                 email = mensajero.getString("email");
                 clave_usuario = mensajero.getString("clave_usuario");
                 id_rol_fk = mensajero.getString("id_rol_fk");
-                usuVO = new UsuarioVO(id_usuario, email, clave_usuario, estado_usuario, nombre, apellido, tdoc,documento, telefono,direccion,id_rol_fk="");
+                usuVO = new UsuarioVO(id_usuario, email, clave_usuario, estado_usuario, nombre, apellido, tdoc, documento, telefono, direccion, id_rol_fk = "");
             }
 
         } catch (SQLException e) {
@@ -74,6 +78,36 @@ public class UsuarioDAO extends ConexionBD {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return usuVO;
+    }
+
+    @Override
+    public boolean agregarRegistro() {        
+        try {
+            sql = "INSERT INTO `usuario`(email, clave_usuario, nombre, apellido, tdoc, documento,telefono, direccion, id_rol_fk) VALUES (?,?,?,?,?,?,?,?,?)";
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, email);
+            puente.setString(2, clave_usuario);
+            puente.setString(3, nombre);
+            puente.setString(4, apellido);
+            puente.setString(5, tdoc);
+            puente.setString(6, documento);
+            puente.setString(7, telefono);
+            puente.setString(8, direccion);
+            puente.setInt(9, rol);
+            puente.executeUpdate();
+            operacion = true;
+        } catch (SQLException e) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException e) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+
+            }
+        }
+        return operacion2;
+
     }
 
 }
