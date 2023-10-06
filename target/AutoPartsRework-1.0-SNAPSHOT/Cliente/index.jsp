@@ -1,3 +1,4 @@
+<%@include file = "../Sesion/cache.jsp" %>
 <%-- 
     Document   : index.jsp
     Created on : 23/09/2023, 06:31:57 PM
@@ -38,6 +39,16 @@
                     </a>
                 </li>
             </ul>
+
+            <ul class="side-menu">
+                <li>
+                    <form method="POST" action="ControladorUsuario">
+                        <li class="nav-item">
+                            <button type="hidden" value="3" name="opcion">Cerrar Sesión</button>
+                        </li>
+                    </form>
+                </li>
+            </ul>
         </div>
         <!-- End of Sidebar -->
 
@@ -61,7 +72,7 @@
                 <a href="#" class="profile">
                     <img src="images/logo.png">
                 </a>
-                
+
                 <a>${email}</a>
             </nav>                        
             <!-- End of Navbar -->

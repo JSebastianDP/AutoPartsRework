@@ -43,9 +43,9 @@ public class ControladorUsuario extends HttpServlet {
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         switch (opcion) {
-            case 1:
+            case 1: //Iniciar Sesion
                 if (request.getParameter("txtCorreo").equals("") || request.getParameter("txtPass").equals("")) {
-                    request.getRequestDispatcher("DashBoardUsuario/index.jsp").forward(request, response);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
                 } else {
                     UsuarioVO usuVo = null;
                     UsuarioDAO usuDAo = new UsuarioDAO(usuVo);
@@ -55,14 +55,14 @@ public class ControladorUsuario extends HttpServlet {
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("UsuarioVO", usuVO);
                         sesion.setAttribute("email", email);
-                        request.getRequestDispatcher("DashBoardUsuario/index.jsp").forward(request, response);
+                        request.getRequestDispatcher("Cliente/index.jsp").forward(request, response);
                     } else {
                         request.getRequestDispatcher("error.jsp").forward(request, response);
                     }
                 }
                 break;
 
-            case 2:
+            case 2: //Registrar usuario
                 nombre = "null";
                 apellido = "null";
                 tdoc = "null";
@@ -80,6 +80,11 @@ public class ControladorUsuario extends HttpServlet {
                 }
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
+           case 3: //Cerrar sesion
+                HttpSession miSesion= request.getSession();   
+                miSesion.removeAttribute("UsuarioVO");
+                miSesion.invalidate();
+                request.getRequestDispatcher("login.jsp").forward(request, response);
 
         }
     }
