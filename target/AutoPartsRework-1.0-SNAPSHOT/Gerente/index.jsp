@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="estiloAdmin.css" rel="stylesheet" type="text/css"/>
-    <title>DashBoard 2</title>
+    <title>Home Administrador</title>
 </head>
 
 <body>

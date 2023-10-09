@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
         <link href="Css/estiloUsuario.css" rel="stylesheet" type="text/css"/>
-        <title>DashBoard 2</title>
+        <title>Home</title>
     </head>
     <body>
 
@@ -33,22 +33,13 @@
             </ul>
             <ul class="side-menu">
                 <li>
-                    <a href="#" class="logout">
+                    <a href="ControladorUsuario?opcion=3" class="logout">
                         <i class='bx bx-log-out-circle'></i>
-                        Logout
+                        Cerrar Sesión
                     </a>
                 </li>
             </ul>
 
-            <ul class="side-menu">
-                <li>
-                    <form method="POST" action="ControladorUsuario">
-                        <li class="nav-item">
-                            <button type="hidden" value="3" name="opcion">Cerrar Sesión</button>
-                        </li>
-                    </form>
-                </li>
-            </ul>
         </div>
         <!-- End of Sidebar -->
 
