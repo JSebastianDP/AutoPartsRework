@@ -43,32 +43,49 @@ public class ControladorUsuario extends HttpServlet {
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         switch (opcion) {
-            case 1: //Iniciar Sesion
-                if (request.getParameter("txtCorreo").equals("") || request.getParameter("txtPass").equals("")) {
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
+            case 1: // Iniciar Sesion
+                if (email == null || email.isEmpty() || clave_usuario == null || clave_usuario.isEmpty()) {
+                    request.setAttribute("mensajeError", "Por favor, ingrese correo y contraseña.");
                 } else {
-                    UsuarioVO usuVo = null;
-                    UsuarioDAO usuDAo = new UsuarioDAO(usuVo);
-                    usuVO = usuDAo.login(email, clave_usuario);
+                    usuVO = usuDAO.login(email, clave_usuario); // Usar las variables definidas antes del switch
                     if (usuVO != null) {
-                        String nombreUsuario = usuVO.getNombre_usuario(); // Reemplaza esto con la forma en que obtienes el nombre del usuario
+                        String idUsuario = usuVO.getId_usuario();
+                        usuVO = usuDAO.obtenerDatosUsuario(idUsuario); // Obtener más datos del usuario, incluido el nombre
+                        nombre = usuVO.getNombre_usuario();
+                        apellido = usuVO.getApelido_usuario();
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("UsuarioVO", usuVO);
                         sesion.setAttribute("email", email);
+                        sesion.setAttribute("nombreUsuario", nombre); // Establecer el nombre en la sesión
+                        sesion.setAttribute("apellido", apellido); // Establecer el nombre en la sesión
                         request.getRequestDispatcher("Cliente/index.jsp").forward(request, response);
-                    } else {
-                        request.getRequestDispatcher("error.jsp").forward(request, response);
                     }
+                    // Si llegamos aquí, significa que las credenciales son incorrectas
+                    request.setAttribute("mensajeError", "Credenciales incorrectas. Por favor, inténtelo de nuevo.");
                 }
+                // Continuar con la redirección incluso en caso de error
+                request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
 
             case 2: //Registrar usuario
-                nombre = "null";
-                apellido = "null";
-                tdoc = "null";
-                documento = "null";
-                telefono = "null";
-                direccion = "null";
+                if (nombre == null || nombre.isEmpty()) {
+                    nombre = "Desconocido"; // Cambia esto al valor predeterminado que desees
+                }
+                if (apellido == null || apellido.isEmpty()) {
+                    apellido = "Desconocido"; // Cambia esto al valor predeterminado que desees
+                }
+                if (tdoc == null || tdoc.isEmpty()) {
+                    tdoc = "Desconocido"; // Cambia esto al valor predeterminado que desees
+                }
+                if (documento == null || documento.isEmpty()) {
+                    documento = "Desconocido"; // Cambia esto al valor predeterminado que desees
+                }
+                if (telefono == null || telefono.isEmpty()) {
+                    telefono = "Desconocido"; // Cambia esto al valor predeterminado que desees
+                }
+                if (direccion == null || direccion.isEmpty()) {
+                    direccion = "Desconocido"; // Cambia esto al valor predeterminado que desees
+                }
 
                 UsuarioVO usuarioVO = new UsuarioVO(id_usuario, email, clave_usuario, estado_usuario, nombre, apellido, tdoc, documento, telefono, direccion, id_rol_fk);
                 UsuarioDAO usuarioDAO = new UsuarioDAO(usuarioVO);
@@ -80,8 +97,8 @@ public class ControladorUsuario extends HttpServlet {
                 }
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
-           case 3: //Cerrar sesion
-                HttpSession miSesion= request.getSession();   
+            case 3: //Cerrar sesion
+                HttpSession miSesion = request.getSession();
                 miSesion.removeAttribute("UsuarioVO");
                 miSesion.invalidate();
                 request.getRequestDispatcher("login.jsp").forward(request, response);

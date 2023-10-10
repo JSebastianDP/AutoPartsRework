@@ -4,8 +4,6 @@
     Created on : 23/09/2023, 06:31:57 PM
     Author     : Sebastian Diaz
 --%>
-
-<%@page import="ModeloVO.UsuarioVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,7 +37,6 @@
                     </a>
                 </li>
             </ul>
-
         </div>
         <!-- End of Sidebar -->
 
@@ -62,13 +59,10 @@
                 </a>
                 <a href="#" class="profile">
                     <img src="images/logo.png">
+                    <span>${sessionScope.nombreUsuario} ${sessionScope.apellido}</span>
                 </a>
-
-                <a>${email}</a>
             </nav>                        
-            <!-- End of Navbar -->
         </div>
         <script src="Js/indexUsuario.js" type="text/javascript"></script>
     </body>
-
 </html>

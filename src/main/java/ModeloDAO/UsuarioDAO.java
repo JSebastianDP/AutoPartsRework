@@ -108,5 +108,38 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
         return operacion;
 
     }
+    
+     public UsuarioVO obtenerDatosUsuario(String idUsuario) {
+        UsuarioVO usuVO = null;
+
+        sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+        try {
+            conexion = this.obtenerConexion();
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, idUsuario);
+            mensajero = puente.executeQuery();
+
+            if (mensajero.next()) {
+                String email = mensajero.getString("email");
+                String clave_usuario = mensajero.getString("clave_usuario");
+                String estado_usuario = mensajero.getString("estado_usuario");
+                String nombre = mensajero.getString("nombre");
+                String apellido = mensajero.getString("apellido");
+                String tdoc = mensajero.getString("tdoc");
+                String documento = mensajero.getString("documento");
+                String telefono = mensajero.getString("telefono");
+                String direccion = mensajero.getString("direccion");
+                String id_rol_fk = mensajero.getString("id_rol_fk");
+
+                // Crear un nuevo UsuarioVO con todos los datos obtenidos
+                usuVO = new UsuarioVO(idUsuario, email, clave_usuario, estado_usuario, nombre, apellido, tdoc, documento, telefono, direccion, id_rol_fk);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener datos del usuario");
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return usuVO;
+    }
 
 }

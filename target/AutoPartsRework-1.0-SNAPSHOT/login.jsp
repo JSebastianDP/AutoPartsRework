@@ -49,6 +49,24 @@
                     <a href="#">¿Olvidaste tu contraseña?</a>
                     <button type="hidden" value="1" name="opcion">Iniciar Sesión</button>
                 </form>
+
+
+                <%
+                    if (request.getAttribute("mensajeError") != null) {
+                %>
+                <div class="mensaje-error">
+                    <%= request.getAttribute("mensajeError")%>
+                </div>
+                <%
+                } else if (request.getAttribute("mensajeExito") != null) {
+                %>
+                <div class="mensaje-exito">
+                    <%= request.getAttribute("mensajeExito")%>
+                </div>
+                <%
+                    }
+                %>
+
             </div>
             <div class="toggle-container">
                 <div class="toggle">
@@ -65,17 +83,17 @@
                 </div>
             </div>
         </div>
-        
-    <%
-                                                    if (request.getAttribute("mensajeError") != null) {%>
-                                                ${mensajeError}
-                                                <%
+
+        <%
+        if (request.getAttribute("mensajeError") != null) {%>
+        ${mensajeError}
+        <%
                                                 } else {%>
-                                                ${mensajeExito}
-                                                <%
-                                                    }
-                                                %>
+        ${mensajeExito}
+        <%
+            }
+        %>
         <script src="estilos/jsLogin.js" type="text/javascript"></script>
     </body>
-    
+
 </html>
