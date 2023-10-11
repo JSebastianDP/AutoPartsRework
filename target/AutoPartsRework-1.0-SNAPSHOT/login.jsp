@@ -12,7 +12,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <link href="estilos/estiloLoginyRegistro.css" rel="stylesheet" type="text/css"/>
+        <link href="<%= request.getContextPath()%>/estilos/estiloLoginyRegistro.css" rel="stylesheet" type="text/css" />
+
         <title>Login</title> 
     </head>
 
@@ -75,20 +76,20 @@
                         <p>Ingresa tus datos personales para poder usar todas las funcionalidades del sitio.</p>
                         <button class="hidden" id="login">Iniciar sesión</button>
                     </div>
-                    <div class="toggle-panel toggle-right">
+<!--                    <div class="toggle-panel toggle-right">
                         <h1>¡Bienvenido!</h1>
                         <p>Regístrate con tus datos personales para poder usar todas las funcionalidades del sitio.</p>
                         <button class="hidden" id="register">Registrarse</button>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
 
         <%
-        if (request.getAttribute("mensajeError") != null) {%>
+            if (request.getAttribute("mensajeError") != null) {%>
         ${mensajeError}
         <%
-                                                } else {%>
+        } else {%>
         ${mensajeExito}
         <%
             }

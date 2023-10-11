@@ -58,7 +58,7 @@ public class ControladorUsuario extends HttpServlet {
                         sesion.setAttribute("email", email);
                         sesion.setAttribute("nombreUsuario", nombre); // Establecer el nombre en la sesión
                         sesion.setAttribute("apellido", apellido); // Establecer el nombre en la sesión
-                        request.getRequestDispatcher("Cliente/index.jsp").forward(request, response);
+                        request.getRequestDispatcher("Menu.jsp").forward(request, response);
                     }
                     // Si llegamos aquí, significa que las credenciales son incorrectas
                     request.setAttribute("mensajeError", "Credenciales incorrectas. Por favor, inténtelo de nuevo.");

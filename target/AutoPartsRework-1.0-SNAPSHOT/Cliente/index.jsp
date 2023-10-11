@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
-        <link href="Css/estiloUsuario.css" rel="stylesheet" type="text/css"/>
+        <link href="<%= request.getContextPath()%>/Css/estiloUsuario.css" rel="stylesheet" type="text/css" />
         <title>Home</title>
     </head>
     <body>
@@ -27,7 +27,7 @@
                 <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
                 <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
                 <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
-                <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>                
+                <li><a href="registrarDatosPersonales.jsp"><i class='bx bx-cog'></i>Settings</a></li>                
             </ul>
             <ul class="side-menu">
                 <li>
@@ -39,7 +39,6 @@
             </ul>
         </div>
         <!-- End of Sidebar -->
-
         <!-- Main Content -->
         <div class="content">
             <!-- Navbar -->
@@ -61,8 +60,10 @@
                     <img src="images/logo.png">
                     <span>${sessionScope.nombreUsuario} ${sessionScope.apellido}</span>
                 </a>
-            </nav>                        
+            </nav>          
         </div>
-        <script src="Js/indexUsuario.js" type="text/javascript"></script>
+                
+
+        <script src="<%= request.getContextPath()%>/Js/index.js" type="text/javascript"></script>
     </body>
 </html>
