@@ -28,7 +28,6 @@
                 <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
                 <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
                 <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>     
-                <li><a href="<%= request.getContextPath()%>/DatosPersonales.css"><i class='bx bx-user'></i>Datos Personales</a></li>
 
             </ul>
             <ul class="side-menu">

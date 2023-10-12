@@ -28,6 +28,7 @@
                         <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
                         <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+
                     </div>
                     <span>Usa tu correo para iniciar sesión</span>
                     <input type="email" placeholder="Email" name="txtCorreo">
@@ -76,11 +77,11 @@
                         <p>Ingresa tus datos personales para poder usar todas las funcionalidades del sitio.</p>
                         <button class="hidden" id="login">Iniciar sesión</button>
                     </div>
-<!--                    <div class="toggle-panel toggle-right">
+                    <div class="toggle-panel toggle-right">
                         <h1>¡Bienvenido!</h1>
                         <p>Regístrate con tus datos personales para poder usar todas las funcionalidades del sitio.</p>
                         <button class="hidden" id="register">Registrarse</button>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>

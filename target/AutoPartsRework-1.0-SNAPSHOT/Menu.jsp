@@ -8,7 +8,7 @@
 if (id_rol_fk.equals("1") ) {
          request.getRequestDispatcher("Gerente/index.jsp").forward(request,response);
     } else if (id_rol_fk.equals("2")) {
-         request.getRequestDispatcher("Cliente/index.jsp").forward(request, response);
+         request.getRequestDispatcher("Cliente/home.jsp").forward(request, response);
      
     } else if (id_rol_fk.equals("3")) {
         request.getRequestDispatcher("Almacenista/almacenista.jsp").forward(request, response);
