@@ -102,6 +102,41 @@ public class ControladorUsuario extends HttpServlet {
                 miSesion.removeAttribute("UsuarioVO");
                 miSesion.invalidate();
                 request.getRequestDispatcher("login.jsp").forward(request, response);
+                break;
+            case 4: // Actualizar datos personales
+                HttpSession sesion = request.getSession();
+                UsuarioVO usuarioSesion = (UsuarioVO) sesion.getAttribute("UsuarioVO"); // Obtener el objeto UsuarioVO de la sesión
+
+                if (usuarioSesion != null) {
+                    String idUsuario = usuarioSesion.getId_usuario(); // Obtener el ID de usuario de la sesión
+                    if (idUsuario != null && !idUsuario.isEmpty()) {
+                        if (nombre == null || nombre.isEmpty() || apellido == null || apellido.isEmpty() || tdoc == null || tdoc.isEmpty()
+                                || documento == null || documento.isEmpty() || direccion == null || direccion.isEmpty()) {
+                            request.setAttribute("mensajeError", "Por favor, ingrese todos los datos para poder continuar.");
+                        } else {
+                            boolean exito = usuDAO.actualizarDatosPersonalesSesion(nombre, apellido, tdoc, documento, telefono, direccion, idUsuario);
+
+                            if (exito) {
+                                // Actualización exitosa
+                                // Puedes agregar un mensaje de éxito y redirigir a la página deseada
+                                request.setAttribute("mensajeExito", "Datos personales actualizados con éxito.");
+                                request.getRequestDispatcher("DatosPersonales.jsp").forward(request, response);
+
+                            } else {
+                                request.setAttribute("mensajeError", "No se pudo actualizar los datos personales.");
+                            }
+                        }
+                    } else {
+                        // Manejar el caso en el que no se pudo obtener el idUsuario de la sesión
+                        request.setAttribute("mensajeError", "No se pudo obtener el ID de usuario de la sesión.");
+                    }
+                } else {
+                    // Manejar el caso en el que no se ha iniciado sesión
+                    request.setAttribute("mensajeError", "No se ha iniciado sesión.");
+                }
+                // Redirigir a la página deseada
+                request.getRequestDispatcher("DatosPersonales.jsp").forward(request, response);
+                break;
 
         }
     }

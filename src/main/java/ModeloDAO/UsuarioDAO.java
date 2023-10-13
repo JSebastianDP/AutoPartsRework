@@ -80,7 +80,7 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
     }
 
     @Override
-    public boolean agregarRegistro() {        
+    public boolean agregarRegistro() {
         try {
             sql = "INSERT INTO `usuario`(email, clave_usuario, nombre, apellido, tdoc, documento,telefono, direccion, id_rol_fk) VALUES (?,?,?,?,?,?,?,?,?)";
             puente = conexion.prepareStatement(sql);
@@ -108,8 +108,8 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
         return operacion;
 
     }
-    
-     public UsuarioVO obtenerDatosUsuario(String idUsuario) {
+
+    public UsuarioVO obtenerDatosUsuario(String idUsuario) {
         UsuarioVO usuVO = null;
 
         sql = "SELECT * FROM usuario WHERE id_usuario = ?";
@@ -118,7 +118,6 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
             puente = conexion.prepareStatement(sql);
             puente.setString(1, idUsuario);
             mensajero = puente.executeQuery();
-
             if (mensajero.next()) {
                 String email = mensajero.getString("email");
                 String clave_usuario = mensajero.getString("clave_usuario");
@@ -140,6 +139,38 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return usuVO;
+    }
+//Metodo para actualizar los datos personales del usuario
+
+    public boolean actualizarDatosPersonalesSesion(String nombre, String apellido, String tdoc, String documento, String telefono, String direccion, String idUsuario) {
+        try {
+            String sql = "UPDATE usuario SET nombre=?, apellido=?, tdoc=?, documento=?, telefono=?, direccion=? WHERE id_usuario=?";
+            conexion = this.obtenerConexion();
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, nombre);
+            puente.setString(2, apellido);
+            puente.setString(3, tdoc);
+            puente.setString(4, documento);
+            puente.setString(5, telefono);
+            puente.setString(6, direccion);
+            puente.setString(7, idUsuario);
+
+            int filasAfectadas = puente.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                return true; // Actualización exitosa
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar los datos personales del usuario");
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException e) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return false; // No se pudo realizar la actualización
     }
 
 }
