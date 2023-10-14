@@ -1,21 +1,17 @@
-<%@include file = "../Sesion/cache.jsp" %>
-<%-- 
-    Document   : index.jsp
-    Created on : 23/09/2023, 06:31:57 PM
-    Author     : Sebastian Diaz
---%>
+<%@ include file="../Sesion/cache.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
-        <link href="<%= request.getContextPath()%>/Css/estiloAdmin.css" rel="stylesheet" type="text/css" />
-        <title>DashBoard Administrador</title>
+        <link href="<%= request.getContextPath()%>/Css/estilosAdmin.css" rel="stylesheet" type="text/css" />
+        <title>Administrador</title>
     </head>
     <body>
-
         <!-- Sidebar -->
         <div class="sidebar">
             <a href="#" class="logo">
@@ -26,13 +22,14 @@
                 <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
                 <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
                 <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
-                <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
-                <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>     
+                <li><a href="<%= request.getContextPath()%>/ControladorUsuario?opcion=5"><i class='bx bx-group'></i>Users</a></li>
+                <li><a href="registrarDatosPersonales.jsp"><i class='bx bx-cog'></i>Settings</a></li>  
+                <li><a href="<%= request.getContextPath()%>/DatosPersonales.jsp"><i class='bx bx-user'></i>Datos Personales</a></li>
 
             </ul>
             <ul class="side-menu">
                 <li>
-                    <a href="ControladorUsuario?opcion=3" class="logout">
+                    <a href="<%= request.getContextPath()%>/ControladorUsuario?opcion=3" class="logout">
                         <i class='bx bx-log-out-circle'></i>
                         Cerrar Sesión
                     </a>
@@ -40,7 +37,6 @@
             </ul>
         </div>
         <!-- End of Sidebar -->
-
         <!-- Main Content -->
         <div class="content">
             <!-- Navbar -->
@@ -62,7 +58,8 @@
                     <img src="images/logo.png">
                     <span>${sessionScope.nombreUsuario} ${sessionScope.apellido}</span>
                 </a>
-            </nav>                        
+            </nav>
+            <!-- Agrega contenido debajo del navbar -->
         </div>
         <script src="<%= request.getContextPath()%>/Js/index.js" type="text/javascript"></script>
     </body>

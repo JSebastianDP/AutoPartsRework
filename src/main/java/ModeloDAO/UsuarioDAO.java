@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.ConexionBD;
@@ -40,7 +42,7 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
             clave_usuario = usuVO.getClave_usuario();
             estado_usuario = usuVO.getEstado_usuario();
             nombre = usuVO.getNombre_usuario();
-            apellido = usuVO.getApelido_usuario();
+            apellido = usuVO.getApellido_usuario();
             tdoc = usuVO.getTipo_doc();
             documento = usuVO.getDocumento();
             telefono = usuVO.getTelefono();
@@ -171,6 +173,50 @@ public class UsuarioDAO extends ConexionBD implements Usuario {
             }
         }
         return false; // No se pudo realizar la actualización
+    }
+
+    public List<UsuarioVO> Listar() {
+        List<UsuarioVO> usuarios = new ArrayList<>();
+        String sql = "SELECT * FROM usuario";  // Selecciona todas las columnas
+
+        try {
+            conexion = obtenerConexion();
+            puente = conexion.prepareStatement(sql);
+            mensajero = puente.executeQuery();
+
+            while (mensajero.next()) {
+                UsuarioVO usuVO = new UsuarioVO();
+                usuVO.setId_usuario(mensajero.getString("id_usuario"));
+                usuVO.setCorreo(mensajero.getString("email"));
+                usuVO.setClave_usuario(mensajero.getString("clave_usuario"));
+                usuVO.setEstado_usuario(mensajero.getString("estado_usuario"));
+                usuVO.setNombre_usuario(mensajero.getString("nombre"));
+                usuVO.setApellido_usuario(mensajero.getString("apellido"));
+                usuVO.setTipo_doc(mensajero.getString("tdoc"));
+                usuVO.setDocumento(mensajero.getString("documento"));
+                usuVO.setTelefono(mensajero.getString("telefono"));
+                usuVO.setDireccion(mensajero.getString("direccion"));
+                usuVO.setId_rol_fk(mensajero.getString("id_rol_fk"));
+                usuarios.add(usuVO);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Manejo de excepciones
+        } finally {
+            try {
+                if (mensajero != null) {
+                    mensajero.close();  // Cierre del ResultSet
+                }
+                if (puente != null) {
+                    puente.close();     // Cierre del PreparedStatement
+                }
+                if (conexion != null) {
+                    conexion.close();    // Cierre de la conexión a la base de datos
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Manejo de excepciones en el cierre de recursos
+            }
+        }
+        return usuarios;
     }
 
 }

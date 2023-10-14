@@ -9,18 +9,18 @@ package ModeloVO;
  * @author Sebastian Diaz
  */
 public class UsuarioVO {
-    String id_usuario, correo, clave_usuario, estado_usuario, nombre_usuario, apelido_usuario, tipo_doc,documento, telefono,direccion,id_rol_fk;
+    String id_usuario, correo, clave_usuario, estado_usuario, nombre_usuario, apellido_usuario, tipo_doc,documento, telefono,direccion,id_rol_fk;
 
     public UsuarioVO() {
     }
 
-    public UsuarioVO(String id_usuario, String correo, String clave_usuario, String estado_usuario, String nombre_usuario, String apelido_usuario, String tipo_doc, String documento, String telefono, String direccion, String id_rol_fk) {
+    public UsuarioVO(String id_usuario, String correo, String clave_usuario, String estado_usuario, String nombre_usuario, String apellido_usuario, String tipo_doc, String documento, String telefono, String direccion, String id_rol_fk) {
         this.id_usuario = id_usuario;
         this.correo = correo;
         this.clave_usuario = clave_usuario;
         this.estado_usuario = estado_usuario;
         this.nombre_usuario = nombre_usuario;
-        this.apelido_usuario = apelido_usuario;
+        this.apellido_usuario = apellido_usuario;
         this.tipo_doc = tipo_doc;
         this.documento = documento;
         this.telefono = telefono;
@@ -68,12 +68,12 @@ public class UsuarioVO {
         this.nombre_usuario = nombre_usuario;
     }
 
-    public String getApelido_usuario() {
-        return apelido_usuario;
+    public String getApellido_usuario() {
+        return apellido_usuario;
     }
 
-    public void setApelido_usuario(String apelido_usuario) {
-        this.apelido_usuario = apelido_usuario;
+    public void setApellido_usuario(String apellido_usuario) {
+        this.apellido_usuario = apellido_usuario;
     }
 
     public String getTipo_doc() {
@@ -115,6 +115,8 @@ public class UsuarioVO {
     public void setId_rol_fk(String id_rol_fk) {
         this.id_rol_fk = id_rol_fk;
     }
+
+   
 
     
     

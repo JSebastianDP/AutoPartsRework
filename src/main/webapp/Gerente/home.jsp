@@ -15,5 +15,10 @@
     </head>
     <body>
         
+         <div class="my-added-content">
+             <h1>Bienvenido</h1>
+             <p>Usuario: ${sessionScope.nombreUsuario} ${sessionScope.apellido}</p>
+        </div>
+        
     </body>
 </html>

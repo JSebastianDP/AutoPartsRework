@@ -8,6 +8,7 @@ import ModeloDAO.UsuarioDAO;
 import ModeloVO.UsuarioVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.jms.MessageEOFException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,7 +53,7 @@ public class ControladorUsuario extends HttpServlet {
                         String idUsuario = usuVO.getId_usuario();
                         usuVO = usuDAO.obtenerDatosUsuario(idUsuario); // Obtener más datos del usuario, incluido el nombre
                         nombre = usuVO.getNombre_usuario();
-                        apellido = usuVO.getApelido_usuario();
+                        apellido = usuVO.getApellido_usuario();
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("UsuarioVO", usuVO);
                         sesion.setAttribute("email", email);
@@ -136,6 +137,11 @@ public class ControladorUsuario extends HttpServlet {
                 }
                 // Redirigir a la página deseada
                 request.getRequestDispatcher("DatosPersonales.jsp").forward(request, response);
+                break;
+            case 5: // Listar usuarios
+                List<UsuarioVO> usuarios = usuDAO.Listar();
+                request.setAttribute("usuarios", usuarios);
+                request.getRequestDispatcher("listarUsuarios.jsp").forward(request, response);
                 break;
 
         }
