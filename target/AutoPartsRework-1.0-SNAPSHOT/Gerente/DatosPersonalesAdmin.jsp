@@ -1,18 +1,17 @@
-<%@include file = "./Cliente/DashBoardCliente.jsp" %>
-<%@include file = "./Sesion/cache.jsp" %>
+<%@include file = "./DashBoardAdmin.jsp" %>
+<%@include file = "../Sesion/cache.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 
     Document   : DatosPersonalesConEstilo
     Created on : 13/10/2023, 9:36:03 p. m.
     Author     : Sebastian Diaz
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Datos Personales admin</title>
     </head>
     <body>
         

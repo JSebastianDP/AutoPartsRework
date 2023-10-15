@@ -168,7 +168,6 @@ body {
     left: 0;
     z-index: 1000;
 }
-
 .content nav::before {
     content: "";
     position: absolute;
@@ -176,9 +175,10 @@ body {
     height: 40px;
     bottom: -40px;
     left: 0;
-    border-radius: 50%;
+    border-radius: 0; /* Cambia esto a 0 */
     box-shadow: -20px -20px 0 var(--light);
 }
+
 
 .content nav a {
     color: var(--dark);
@@ -454,5 +454,55 @@ textarea {
         margin-left: 230px; /* Ajusta el margen izquierdo para que no esté debajo del menú lateral */
     }
 }
+/* Estilos de la tabla */
+#miTabla {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    transition: margin-left 0.3s ease; /* Agrega una transición al margen izquierdo de la tabla */
+}
 
+#miTabla th {
+    padding: 10px;
+    border: 1px solid var(--grey); /* Borde con color suave */
+    background-color: #1976D2; /* Fondo azul vivo para el encabezado del thead */
+    color: #fff; /* Color del texto en el encabezado del thead */
+}
+
+#miTabla td {
+    padding: 10px;
+    border: 1px solid var(--grey); /* Borde con color suave */
+    background-color: #fff; /* Fondo blanco para las filas de datos */
+}
+
+/* Estiliza las filas impares de la tabla para mejorar la legibilidad */
+#miTabla tr:nth-child(odd) {
+    background-color: #f6f6f9; /* Fondo ligeramente gris para filas impares (datos) */
+}
+
+/* Añade estilos para los enlaces "Editar" y "Eliminar" dentro de la tabla */
+#miTabla .btn-edit, #miTabla .btn-delete {
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    color: #1976D2; /* Color azul para el texto de los botones */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Animación de color al pasar el cursor */
+}
+
+#miTabla .btn-edit {
+    background-color: #BBF7D0; /* Fondo verde suave para el botón "Editar" */
+}
+
+#miTabla .btn-delete {
+    background-color: #FECDD3; /* Fondo rojo suave para el botón "Eliminar" */
+}
+
+#miTabla .btn-edit:hover, #miTabla .btn-delete:hover {
+    background-color: #1976D2; /* Cambia el fondo al pasar el cursor por encima */
+    color: #fff; /* Cambia el color del texto al pasar el cursor por encima */
+}
 

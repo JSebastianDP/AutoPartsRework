@@ -4,12 +4,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
         <title>Listar Usuarios</title>
     </head>
     <body>
         <div class="my-added-content">
-            <h1>Listar Usuarios</h1>
-            <table class="table table-striped">
+            <table class="table table-striped datatable" id="miTabla">
+                <h1>Listar Usuarios</h1>
                 <thead>
                     <tr>
                         <th>Usuario ID</th>
@@ -47,7 +48,16 @@
                         </tr>
                     </c:forEach>
                 </tbody>
-            </table>    
+            </table>
         </div>
+        <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#miTabla').DataTable();
+            });
+        </script>
+
+
     </body>
 </html>
