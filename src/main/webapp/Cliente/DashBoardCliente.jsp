@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
-        <link href="<%= request.getContextPath()%>/Css/estiloprueba.css" rel="stylesheet" type="text/css" />
+        <link href="<%= request.getContextPath()%>/Css/estiloUsuario.css" rel="stylesheet" type="text/css" />
         <title>Home Cliente</title>
     </head>
     <body>
@@ -24,7 +24,7 @@
                 <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
                 <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
                 <li><a href="registrarDatosPersonales.jsp"><i class='bx bx-cog'></i>Settings</a></li>  
-                <li><a href="<%= request.getContextPath()%>/Cliente/DatosPersonales.jsp"><i class='bx bx-user'></i>Datos Personales</a></li>
+                <li><a href="<%= request.getContextPath()%>/Cliente/DatosPersonales.jsp"><i class='bx bx-id-card'></i>Datos Personales</a></li>
 
             </ul>
             <ul class="side-menu">

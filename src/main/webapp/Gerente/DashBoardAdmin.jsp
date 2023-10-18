@@ -22,8 +22,9 @@
                 <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
                 <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
                 <li><a href="<%= request.getContextPath()%>/ControladorUsuario?opcion=5"><i class='bx bx-group'></i>Users</a></li>
+                <li><a href="#"><i class='bx bx-shopping-bag'></i>Ventas</a></li>
                 <li><a href="registrarDatosPersonales.jsp"><i class='bx bx-cog'></i>Settings</a></li>  
-                <li><a href="<%= request.getContextPath()%>/Gerente/DatosPersonalesAdmin.jsp"><i class='bx bx-user'></i>Datos Personales</a></li>
+                <li><a href="<%= request.getContextPath()%>/Gerente/DatosPersonalesAdmin.jsp"><i class='bx bx-id-card'></i>Datos Personales</a></li>
             </ul>
             <ul class="side-menu">
                 <li>
