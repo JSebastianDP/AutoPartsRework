@@ -1,11 +1,15 @@
 ModeloVO\UsuarioVO.class
+ModeloVO\ProveedorVO.class
 com\mycompany\autopartsrework\JAXRSConfiguration.class
+Controladores\ControladorCompras.class
 Controladores\ControladorUsuario.class
+ModeloVO\CompraVO.class
 util\ConexionBD.class
 Controladores\Sesiones.class
 ModeloDAO\UsuarioDAO.class
 util\Usuario.class
 ModeloVO\VentaVO.class
+ModeloDAO\CompraDAO.class
 util\Validar.class
 com\mycompany\autopartsrework\resources\JavaEE8Resource.class
 ModeloDAO\VentaDAO.class
