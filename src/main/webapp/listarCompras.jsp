@@ -5,12 +5,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <title>Listar Ventas</title>
+    <title>Listar Compras</title>
 </head>
 <body>
 <div class="my-added-content">
     <table class="table table-striped datatable" id="miTabla">
-        <h1>Listar Ventas</h1>
+        <h1>Listar Compras</h1>
         <thead>
         <tr>
             <th>Compra ID</th>
@@ -36,8 +36,8 @@
                     <td>${compra.proveedorVO.correo_proveedor}</td>
                     <td>${compra.estado_compra}</td>
                     <td>
-                        <a href="editarVenta.jsp?id=${compra.id_compra}" class="btn-edit">Editar</a>
-                        <a href="eliminarVenta.jsp?id=${compra.id_compra}" class="btn-delete">Eliminar</a>
+                        <a href="editarCompra.jsp?id=${compra.id_compra}" class="btn-edit">Editar</a>
+                        <a href="eliminarCompra.jsp?id=${compra.id_compra}" class="btn-delete">Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>

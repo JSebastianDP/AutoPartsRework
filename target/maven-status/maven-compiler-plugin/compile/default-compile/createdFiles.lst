@@ -6,10 +6,12 @@ Controladores\ControladorUsuario.class
 ModeloVO\CompraVO.class
 util\ConexionBD.class
 Controladores\Sesiones.class
+ModeloDAO\ProveedorDAO.class
 ModeloDAO\UsuarioDAO.class
 util\Usuario.class
 ModeloVO\VentaVO.class
 ModeloDAO\CompraDAO.class
+Controladores\ControladorProveedores.class
 util\Validar.class
 com\mycompany\autopartsrework\resources\JavaEE8Resource.class
 ModeloDAO\VentaDAO.class

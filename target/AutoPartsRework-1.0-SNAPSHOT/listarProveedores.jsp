@@ -5,39 +5,31 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <title>Listar Compras</title>
+    <title>Listar Proveedores</title>
 </head>
 <body>
 <div class="my-added-content">
     <table class="table table-striped datatable" id="miTabla">
-        <h1>Listar Compras</h1>
+        <h1>Listar Proveedores</h1>
         <thead>
         <tr>
-            <th>Compra ID</th>
-            <th>Fecha compra</th>
-            <th>Total compra</th>
-            <th>Estado compra</th>
-            <th>id proveedor</th>
+            <th>Proveedor ID</th>
             <th>Nombre proveedor</th>
-            <th>Correo proveedor</th>
-            <th>Estado proveedor</th>
+            <th>telefono proveedor</th>
+            <th>correo proveedor</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-            <c:forEach var="compra" items="${compras}">
+            <c:forEach var="proveedor" items="${proveedores}">
                 <tr>
-                    <td>${compra.id_compra}</td>
-                    <td>${compra.fecha_compra}</td>
-                    <td>${compra.total_compra}</td>
-                    <td>${compra.estado_compra}</td>
-                    <td>${compra.id_proveedor_fk}</td>
-                    <td>${compra.proveedorVO.nombre_proveedor}</td>
-                    <td>${compra.proveedorVO.correo_proveedor}</td>
-                    <td>${compra.estado_compra}</td>
+                    <td>${proveedor.id_proveedor}</td>
+                    <td>${proveedor.nombre_proveedor}</td>
+                    <td>${proveedor.telefono_proveedor}</td>
+                    <td>${proveedor.correo_proveedor}</td>
                     <td>
-                        <a href="editarCompra.jsp?id=${compra.id_compra}" class="btn-edit">Editar</a>
-                        <a href="eliminarCompra.jsp?id=${compra.id_compra}" class="btn-delete">Eliminar</a>
+                        <a href="editarProveedor.jsp?id=${proveedor.id_proveedor}" class="btn-edit">Editar</a>
+                        <a href="eliminarProveedor.jsp?id=${proveedor.id_proveedor}" class="btn-delete">Eliminar</a>
                     </td>
                 </tr>
             </c:forEach>
