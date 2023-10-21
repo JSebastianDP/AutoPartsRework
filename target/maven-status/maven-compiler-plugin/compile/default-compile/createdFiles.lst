@@ -2,6 +2,7 @@ ModeloVO\UsuarioVO.class
 ModeloVO\ProveedorVO.class
 com\mycompany\autopartsrework\JAXRSConfiguration.class
 Controladores\ControladorCompras.class
+ModeloVO\ProductoVO.class
 Controladores\ControladorUsuario.class
 ModeloVO\CompraVO.class
 util\ConexionBD.class
@@ -9,8 +10,11 @@ Controladores\Sesiones.class
 ModeloDAO\ProveedorDAO.class
 ModeloDAO\UsuarioDAO.class
 util\Usuario.class
+ModeloDAO\ProductoDAO.class
 ModeloVO\VentaVO.class
 ModeloDAO\CompraDAO.class
+Controladores\ControladorImg.class
+Controladores\ControladorProductos.class
 Controladores\ControladorProveedores.class
 util\Validar.class
 com\mycompany\autopartsrework\resources\JavaEE8Resource.class
