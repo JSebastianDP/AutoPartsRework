@@ -11,7 +11,7 @@
         <div class="my-added-content">
             <table class="table table-striped datatable" id="miTabla">
                 <h1>Listar Proveedores</h1>
-                <a href="agregarProducto.jsp" class="btn-add">Agregar Proveedor</a>
+                <a href="agregarProveedor.jsp" class="btn-add">Agregar Proveedor</a>
                 <thead>
                     <tr>
                         <th>Proveedor ID</th>
