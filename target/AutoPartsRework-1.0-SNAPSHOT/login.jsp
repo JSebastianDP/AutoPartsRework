@@ -3,7 +3,6 @@
     Created on : 1/10/2023, 6:09:37 p. m.
     Author     : Sebastian Diaz
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
         <link href="<%= request.getContextPath()%>/estilos/estiloLoginyRegistro.css" rel="stylesheet" type="text/css" />
-
         <title>Login</title> 
     </head>
 
