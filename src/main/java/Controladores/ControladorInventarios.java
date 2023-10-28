@@ -38,11 +38,10 @@ public class ControladorInventarios extends HttpServlet {
         InventarioVO invVO = new InventarioVO();
         InventarioDAO invDAO = new InventarioDAO();
         switch (opcion) {
-
             case 1:
                 List<InventarioVO> inventario = invDAO.Listar();
                 request.setAttribute("inventario", inventario);
-                request.getRequestDispatcher("listarInventario.jsp").forward(request, response);
+                request.getRequestDispatcher("listarInventarios.jsp").forward(request, response);
                 break;
 
         }

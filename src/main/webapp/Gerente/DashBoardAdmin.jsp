@@ -26,7 +26,8 @@
                 <li><a href="<%= request.getContextPath()%>/ControladorCompras?opcion=1"><i class='bx bx-cart'></i>Compras</a></li>
                 <li><a href="<%= request.getContextPath()%>/ControladorProveedores?opcion=1"><i class='bx bx-package'></i>Proveedores</a></li>
                 <li><a href="<%= request.getContextPath()%>/ControladorProductos?opcion=1"><i class='bx bx-shopping-bag '></i>Productos</a></li>
-                <li><a href="registrarDatosPersonales.jsp"><i class='bx bx-cog'></i>Settings</a></li>  
+                <li><a href="<%= request.getContextPath()%>/ControladorInventarios?opcion=1"><i class='bx bx-archive'></i>Inventarios</a></li>
+                <li><a href="<%= request.getContextPath()%>/registrarDatosPersonales.jsp"><i class='bx bx-cog'></i>Settings</a></li>  
                 <li><a href="<%= request.getContextPath()%>/Gerente/DatosPersonalesAdmin.jsp"><i class='bx bx-id-card'></i>Datos Personales</a></li>
             </ul>
             <ul class="side-menu">

@@ -11,26 +11,30 @@
         <div class="my-added-content">
             <table class="table table-striped datatable" id="miTabla">
                 <h1>Listar inventarios</h1>
-                <a href="Gerente/agregarProveedor.jsp" class="btn-add">Agregar inventario</a>
+                <a href="Gerente/agregarInventario.jsp" class="btn-add">Agregar inventario</a>
                 <thead>
                     <tr>
-                        <th>Proveedor ID</th>
-                        <th>Nombre proveedor</th>
-                        <th>telefono proveedor</th>
-                        <th>correo proveedor</th>
+                        <th>Inventario ID</th>
+                        <th>Informacion inventario</th>
+                        <th>Nombre producto</th>
+                        <th>Perdidas Productos</th>
+                        <th>fecha inventario</th>
+                        <th>Id usuario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="proveedor" items="${proveedores}">
+                    <c:forEach var="inventario" items="${inventario}">
                         <tr>
-                            <td>${proveedor.id_proveedor}</td>
-                            <td>${proveedor.nombre_proveedor}</td>
-                            <td>${proveedor.telefono_proveedor}</td>
-                            <td>${proveedor.correo_proveedor}</td>
+                            <td>${inventario.id_inventario}</td>
+                            <td>${inventario.informacion_inventario}</td>
+                            <td>${inventario.productoVO.nombre_producto}</td>
+                            <td>${inventario.perdidas_productos}</td>
+                            <td>${inventario.fecha_inventario}</td>
+                            <td>${inventario.id_usuario_fk}</td>
                             <td>
-                                <a href="editarProveedor.jsp?id=${proveedor.id_proveedor}" class="btn-edit">Editar</a>
-                                <a href="eliminarProveedor.jsp?id=${proveedor.id_proveedor}" class="btn-delete">Eliminar</a>
+                                <a href="editarProveedor.jsp?id=${inventario.id_inventario}" class="btn-edit">Editar</a>
+                                <a href="eliminarProveedor.jsp?id=${inventario.id_inventario}" class="btn-delete">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>

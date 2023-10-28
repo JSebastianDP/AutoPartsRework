@@ -10,6 +10,7 @@ ModeloDAO\CompraDAO.class
 Controladores\ControladorImg.class
 Controladores\ControladorProductos.class
 util\Validar.class
+Controladores\ControladorInventarios.class
 ModeloVO\ProveedorVO.class
 com\mycompany\autopartsrework\JAXRSConfiguration.class
 ModeloVO\ProductoVO.class

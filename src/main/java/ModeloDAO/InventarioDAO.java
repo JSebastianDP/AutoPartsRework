@@ -47,7 +47,7 @@ public class InventarioDAO extends ConexionBD {
                 proVO.setNombre_producto(mensajero.getString("nombre_producto"));
                 invVO.setProductoVO(proVO);
                 inventario.add(invVO);                
-                System.out.println(invVO.toString());
+                System.out.println("Los productos encontrados en el metodo toString son: " + invVO.toString());
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Manejo de excepciones
