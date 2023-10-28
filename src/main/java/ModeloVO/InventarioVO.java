@@ -16,17 +16,19 @@ public class InventarioVO {
     String perdidas_productos;
     String id_producto_fk;
     String id_usuario_fk;
+    ProductoVO productoVO;
 
     public InventarioVO() {
     }
 
-    public InventarioVO(String id_inventario, String informacion_inventario, String fecha_inventario, String perdidas_productos, String id_producto_fk, String id_usuario_fk) {
+    public InventarioVO(String id_inventario, String informacion_inventario, String fecha_inventario, String perdidas_productos, String id_producto_fk, String id_usuario_fk, ProductoVO productoVO) {
         this.id_inventario = id_inventario;
         this.informacion_inventario = informacion_inventario;
         this.fecha_inventario = fecha_inventario;
         this.perdidas_productos = perdidas_productos;
         this.id_producto_fk = id_producto_fk;
         this.id_usuario_fk = id_usuario_fk;
+        this.productoVO = productoVO;
     }
 
     public String getId_inventario() {
@@ -76,8 +78,19 @@ public class InventarioVO {
     public void setId_usuario_fk(String id_usuario_fk) {
         this.id_usuario_fk = id_usuario_fk;
     }
-    
-    
-    
+
+    public ProductoVO getProductoVO() {
+        return productoVO;
+    }
+
+    public void setProductoVO(ProductoVO productoVO) {
+        this.productoVO = productoVO;
+    } 
+
+    @Override
+    public String toString() {
+        return "InventarioVO{" + "id_inventario=" + id_inventario + ", informacion_inventario=" + informacion_inventario + ", fecha_inventario=" + fecha_inventario + ", perdidas_productos=" + perdidas_productos + ", id_producto_fk=" + id_producto_fk + ", id_usuario_fk=" + id_usuario_fk + ", productoVO=" + productoVO + '}';
+    }
+  
     
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ModeloDAO;
 
 import ModeloVO.ProveedorVO;
@@ -13,30 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import util.ConexionBD;
 
-/**
- *
- * @author Sebastian Diaz
- */
-public class ProveedorDAO extends ConexionBD{
+public class ProveedorDAO extends ConexionBD {
     private Connection conexion;
     private ResultSet mensajero;
     private PreparedStatement puente;
-    private boolean operacion = false;
-    private String sql;
-    ConexionBD con = new ConexionBD();
-
+    
     public ProveedorDAO() {
     }
 
     public List<ProveedorVO> Listar() {
         List<ProveedorVO> proveedores = new ArrayList<>();
-        String sql = "select * from proveedor";
+        String sql = "SELECT * FROM proveedor";
 
         try {
             conexion = obtenerConexion();
             puente = conexion.prepareStatement(sql);
             mensajero = puente.executeQuery();
-
             while (mensajero.next()) {
                 ProveedorVO proVO = new ProveedorVO();
                 proVO.setId_proveedor(mensajero.getString("id_proveedor"));
@@ -48,10 +36,29 @@ public class ProveedorDAO extends ConexionBD{
         } catch (SQLException e) {
             e.printStackTrace(); // Manejo de excepciones
         } finally {
-            // Cierre de recursos
+            // Cierre de recursos en el bloque finally
+            if (mensajero != null) {
+                try {
+                    mensajero.close();
+                } catch (SQLException e) {
+                    e.printStackTrace(); // Manejo de excepciones
+                }
+            }
+            if (puente != null) {
+                try {
+                    puente.close();
+                } catch (SQLException e) {
+                    e.printStackTrace(); // Manejo de excepciones
+                }
+            }
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException e) {
+                    e.printStackTrace(); // Manejo de excepciones
+                }
+            }
         }
         return proveedores;
     }
-    
-   
 }
