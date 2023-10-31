@@ -13,6 +13,7 @@ util\Validar.class
 Controladores\ControladorInventarios.class
 ModeloVO\ProveedorVO.class
 com\mycompany\autopartsrework\JAXRSConfiguration.class
+ModeloVO\detalleVentaVO.class
 ModeloVO\ProductoVO.class
 ModeloDAO\InventarioDAO.class
 Controladores\Sesiones.class

@@ -6,6 +6,7 @@ package Controladores;
 
 import ModeloDAO.VentaDAO;
 import ModeloVO.VentaVO;
+import ModeloVO.detalleVentaVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -36,17 +37,42 @@ public class ControladorVentas extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         VentaVO venVO = new VentaVO();
         VentaDAO venDAO = new VentaDAO();
-
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         switch (opcion) {
 
             case 1:
+                // Listar ventas
                 List<VentaVO> ventas = venDAO.Listar();
-                request.setAttribute("ventas", ventas);
-                request.getRequestDispatcher("listarVentas.jsp").forward(request, response);
+                if (ventas != null && !ventas.isEmpty()) {
+                    request.setAttribute("ventas", ventas);
+                    request.getRequestDispatcher("listarVentas.jsp").forward(request, response);
+                } else {
+                    // No se encontraron ventas
+                    request.setAttribute("mensaje", "No hay ventas disponibles.");
+                    request.getRequestDispatcher("listarVentas.jsp").forward(request, response);
+                }
                 break;
 
+            case 2:
+                // Ver detalles de una venta
+                int idVenta = Integer.parseInt(request.getParameter("idVenta"));
+                System.out.println("El id de la venta obtenido de la vista es" + idVenta);
+                List<detalleVentaVO> detallesVenta = venDAO.ListarDetalle(idVenta);
+                if (detallesVenta != null && !detallesVenta.isEmpty()) {
+                    request.setAttribute("detallesVenta", detallesVenta);
+                    request.getRequestDispatcher("verDetalle.jsp").forward(request, response);
+                } else {
+                    // No se encontraron detalles para la venta
+                    request.setAttribute("mensaje", "No se encontraron detalles para la venta con ID " + idVenta);
+                    request.getRequestDispatcher("listarVentas.jsp").forward(request, response);
+                }
+                break;
+
+            default:
+                // Manejar otras opciones o errores
+                // Puedes redirigir a una página de error o realizar otras acciones según sea necesario.
+                break;
         }
 
     }
