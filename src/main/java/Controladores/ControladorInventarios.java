@@ -6,6 +6,7 @@ package Controladores;
 
 import ModeloDAO.InventarioDAO;
 import ModeloVO.InventarioVO;
+import ModeloVO.UsuarioVO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import util.Fecha;
 
 /**
  *
@@ -34,6 +37,13 @@ public class ControladorInventarios extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        String informacionInventario = request.getParameter("textInformacion");
+        String perdidasProductos = request.getParameter("textPerdida");
+        String fechaInventario = request.getParameter("textFecha");
+        String idProductoSeleccionado = request.getParameter("textProducto");
+        UsuarioVO usuVO = new UsuarioVO();
+
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         InventarioVO invVO = new InventarioVO();
         InventarioDAO invDAO = new InventarioDAO();
@@ -44,9 +54,26 @@ public class ControladorInventarios extends HttpServlet {
                 request.getRequestDispatcher("listarInventarios.jsp").forward(request, response);
                 break;
 
+            case 2:
+                HttpSession sesion = request.getSession();
+                String idUsuario  = (String) sesion.getAttribute("idUsuario");                
+                Fecha fechaSystem = new Fecha();                
+                invVO.setInformacion_inventario(informacionInventario);
+                invVO.setPerdidas_productos(perdidasProductos);
+                invVO.setId_producto_fk(idProductoSeleccionado);
+                boolean registrado = invDAO.Registrar(invVO, idUsuario,  fechaSystem.Fecha());
+
+                if (registrado) {
+                    request.setAttribute("mensajeExito", "Inventario registrado con éxito.");
+                } else {
+                    request.setAttribute("mensajeError", "No se pudo registrar el inventario.");
+                }
+                // Redirigir a la vista para agregar más inventario
+                request.getRequestDispatcher("Gerente/agregarInventario.jsp").forward(request, response);
+                break;
+
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

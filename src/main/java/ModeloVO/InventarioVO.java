@@ -4,6 +4,7 @@
  */
 package ModeloVO;
 
+
 /**
  *
  * @author Sebastian Diaz
@@ -85,12 +86,10 @@ public class InventarioVO {
 
     public void setProductoVO(ProductoVO productoVO) {
         this.productoVO = productoVO;
-    } 
-
-    @Override
-    public String toString() {
-        return "InventarioVO{" + "id_inventario=" + id_inventario + ", informacion_inventario=" + informacion_inventario + ", fecha_inventario=" + fecha_inventario + ", perdidas_productos=" + perdidas_productos + ", id_producto_fk=" + id_producto_fk + ", id_usuario_fk=" + id_usuario_fk + ", productoVO=" + productoVO + '}';
     }
-  
+
+    
+    
+    
     
 }

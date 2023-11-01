@@ -4,6 +4,7 @@ Controladores\ControladorUsuario.class
 ModeloVO\CompraVO.class
 util\ConexionBD.class
 ModeloDAO\UsuarioDAO.class
+util\Fecha.class
 util\Usuario.class
 ModeloVO\VentaVO.class
 ModeloDAO\CompraDAO.class

@@ -17,16 +17,16 @@
         
          <!-- Agrega contenido debajo del navbar -->
         <div class="my-added-content">
-            <form method="post" action="ControladorUsuario">
+            <form method="post" action="<%= request.getContextPath()%>/ControladorInventarios">
                 <h2>Registra un inventario</h2>
                 <div class="form-group">
                     <label for="textInformacion">Informacion del inventario:</label>
                     <input type="text" id="Informacion" name="textInformacion" placeholder="Ingrese la informacion del inventario" >
                 </div>
-                <div class="form-group">
+<!--                <div class="form-group">
                     <label for="textFecha">fecha del inventario:</label>
                     <input type="text" id="textFecha" name="textFecha" placeholder="Ingrese la fecha del inventario" >
-                </div>
+                </div>-->
                 <div class="form-group">
                     <label for="textPerdida">Perdida productos:</label>
                     <input type="text" id="textPerdida" name="textPerdida" placeholder="Por favor ingrese las perdidas de los productos" >
@@ -35,7 +35,7 @@
                     <label for="textProducto">Id producto</label>
                     <input type="text" id="textProducto" name="textProducto" placeholder="Por favor ingrese el id del producto" >
                 </div>
-                <button type="submit" class="btn-submit" value="1" name="opcion">Registrar Inventario</button>
+                <button type="submit" class="btn-submit" value="2" name="opcion">Registrar Inventario</button>
                 <br>
                 <center>
                 <%
@@ -59,4 +59,3 @@
         
     </body>
 </html>
-s

@@ -53,11 +53,14 @@ public class ControladorUsuario extends HttpServlet {
                         String idUsuario = usuVO.getId_usuario();
                         usuVO = usuDAO.obtenerDatosUsuario(idUsuario); // Obtener más datos del usuario, incluido el nombre
                         nombre = usuVO.getNombre_usuario();
+                        idUsuario = usuVO.getId_usuario();
                         apellido = usuVO.getApellido_usuario();
                         HttpSession sesion = request.getSession(true);
                         sesion.setAttribute("UsuarioVO", usuVO);
                         sesion.setAttribute("email", email);
                         sesion.setAttribute("nombreUsuario", nombre); // Establecer el nombre en la sesión
+                        sesion.setAttribute("idUsuario", idUsuario);
+                        System.out.println("El id del usuario es: " + idUsuario);
                         sesion.setAttribute("apellido", apellido); // Establecer el nombre en la sesión
                         request.getRequestDispatcher("Menu.jsp").forward(request, response);
                     }

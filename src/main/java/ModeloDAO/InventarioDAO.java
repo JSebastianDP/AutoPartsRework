@@ -7,7 +7,6 @@ package ModeloDAO;
 import ModeloVO.InventarioVO;
 import ModeloVO.ProductoVO;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +23,6 @@ public class InventarioDAO extends ConexionBD {
     private Connection conexion;
     private ResultSet mensajero;
     private PreparedStatement puente;
-
     public InventarioDAO() {
     }
 
@@ -46,8 +44,7 @@ public class InventarioDAO extends ConexionBD {
                 ProductoVO proVO = new ProductoVO();
                 proVO.setNombre_producto(mensajero.getString("nombre_producto"));
                 invVO.setProductoVO(proVO);
-                inventario.add(invVO);                
-                System.out.println("Los productos encontrados en el metodo toString son: " + invVO.toString());
+                inventario.add(invVO);
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Manejo de excepciones
@@ -76,6 +73,41 @@ public class InventarioDAO extends ConexionBD {
             }
         }
         return inventario;
-
     }
+
+    public boolean Registrar(InventarioVO inventario, String idUsuarioSesion, String fecha) {
+        boolean registrado = false;
+        String sql = "INSERT INTO inventario (informacion_inventario, perdidas_productos, fecha_inventario, id_producto_fk, id_usuario_fk) VALUES (?, ?, ?, ?,?)";
+        try {
+            conexion = obtenerConexion();
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, inventario.getInformacion_inventario());
+            puente.setString(2, inventario.getPerdidas_productos());
+            puente.setString(3, fecha);
+            puente.setString(4, inventario.getId_producto_fk());
+            puente.setString(5, idUsuarioSesion);
+
+            int resultado = puente.executeUpdate();
+            registrado = (resultado > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (puente != null) {
+                try {
+                    puente.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return registrado;
+    }
+
 }
