@@ -11,7 +11,7 @@
         <div class="my-added-content">
             <table class="table table-striped datatable" id="miTabla">
                 <h1>Listar Compras</h1>
-                <a href="agregarCompra.jsp" class="btn-add">Agregar Compra</a>
+                <a href="<%=request.getContextPath()%>/Gerente/agregarCompra.jsp" class="btn-add">Agregar Compra</a>
                 <thead>
                     <tr>
                         <th>Compra ID</th>
