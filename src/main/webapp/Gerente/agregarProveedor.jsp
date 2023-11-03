@@ -17,21 +17,21 @@
         
          <!-- Agrega contenido debajo del navbar -->
         <div class="my-added-content">
-            <form method="post" action="ControladorUsuario">
+            <form method="post" action="<%= request.getContextPath()%>/ControladorProveedores">
                 <h2>Registra un nuevo proveedor</h2>
                 <div class="form-group">
                     <label for="textNombre">Nombre del proveedor:</label>
-                    <input type="text" id="nombre" name="textNombre" placeholder="Ingrese el nombre del proveedor" >
+                    <input type="text" id="nombre" name="txtNombre" placeholder="Ingrese el nombre del proveedor" >
                 </div>
                 <div class="form-group">
                     <label for="textTelefono">Telefono del proveedor:</label>
-                    <input type="number" id="textTelefono" name="textTelefono" placeholder="Ingrese el telefono del proveedor" >
+                    <input type="number" id="txtTelefono" name="txtTelefono" placeholder="Ingrese el telefono del proveedor" >
                 </div>
                 <div class="form-group">
                     <label for="textCorreo">Correo del proveedor:</label>
-                    <input type="text" id="textCorreo" name="textCorreo" placeholder="Ingrese el correo del proveedor" >
+                    <input type="text" id="txtCorreo" name="txtCorreo" placeholder="Ingrese el correo del proveedor" >
                 </div>
-                <button type="submit" class="btn-submit" value="4" name="opcion">Registrar proveedor</button>
+                <button type="submit" class="btn-submit" value="2" name="opcion">Registrar proveedor</button>
                 <br>
                 <center>
                 <%

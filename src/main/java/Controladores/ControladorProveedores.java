@@ -34,6 +34,10 @@ public class ControladorProveedores extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String nombre_proveedor = request.getParameter("txtNombre");
+        String telefonno_proveedor = request.getParameter("txtTelefono");
+        String correo_proveedor = request.getParameter("txtCorreo");
+        
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         ProveedorVO proVO = new ProveedorVO();
         ProveedorDAO proDAO = new ProveedorDAO();
@@ -43,6 +47,20 @@ public class ControladorProveedores extends HttpServlet {
                 List<ProveedorVO> proveedores = proDAO.Listar();
                 request.setAttribute("proveedores", proveedores);
                 request.getRequestDispatcher("listarProveedores.jsp").forward(request, response);
+                break;
+
+            case 2:
+                proVO.setNombre_proveedor(nombre_proveedor);
+                proVO.setTelefono_proveedor(telefonno_proveedor);
+                proVO.setCorreo_proveedor(correo_proveedor);
+                boolean registrado = proDAO.Registrar(proVO);
+                if (registrado) {
+                    request.setAttribute("mensajeExito", "proveedor registrado con éxito.");
+                } else {
+                    request.setAttribute("mensajeError", "No se pudo registrar el proveedor.");
+                }
+                // Redirigir a la vista para agregar más proveedores
+                request.getRequestDispatcher("Gerente/agregarProveedor.jsp").forward(request, response);
                 break;
 
         }

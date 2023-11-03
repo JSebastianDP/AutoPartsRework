@@ -61,4 +61,40 @@ public class ProveedorDAO extends ConexionBD {
         }
         return proveedores;
     }
+    
+    
+    public boolean Registrar(ProveedorVO proveedor) {
+        boolean registrado = false;
+        String sql = "INSERT INTO proveedor (nombre_proveedor, telefono_proveedor,correo_proveedor) VALUES (?,?,?)";
+        try {
+            conexion = obtenerConexion();
+            puente = conexion.prepareStatement(sql);
+            puente.setString(1, proveedor.getNombre_proveedor());
+            puente.setString(2, proveedor.getTelefono_proveedor());
+            puente.setString(3, proveedor.getCorreo_proveedor());
+            int resultado = puente.executeUpdate();
+            
+            registrado = (resultado > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (puente != null) {
+                try {
+                    puente.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conexion != null) {
+                try {
+                    conexion.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return registrado;
+    }
+    
+    
 }
