@@ -18,8 +18,8 @@ import util.ConexionBD;
  *
  * @author Sebastian Diaz
  */
-public class CompraDAO extends ConexionBD{
-    
+public class CompraDAO extends ConexionBD {
+
     private Connection conexion;
     private ResultSet mensajero;
     private PreparedStatement puente;
@@ -46,7 +46,7 @@ public class CompraDAO extends ConexionBD{
                 comVO.setTotal_compra(mensajero.getString("total_compra"));
                 comVO.setEstado_compra(mensajero.getString("estado_compra"));
                 comVO.setId_proveedor_fk(mensajero.getString("id_proveedor_fk"));
-               // Crear un objeto ProveedorVO y obtener los datos que se piden en la consulta sql
+                // Crear un objeto ProveedorVO y obtener los datos que se piden en la consulta sql
                 ProveedorVO proVO = new ProveedorVO();
                 // Asignar el objeto de ProveedorVO creado anteriormente  a ComprasVO
                 proVO.setNombre_proveedor(mensajero.getString("nombre_proveedor"));
@@ -61,5 +61,5 @@ public class CompraDAO extends ConexionBD{
         }
         return compras;
     }
-    
+
 }

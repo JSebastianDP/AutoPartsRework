@@ -19,8 +19,8 @@ public class ControladorImg extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        pdao.listarId(id);
+        String id = request.getParameter("id");
+        pdao.buscar(id);
 //        processRequest(request, response);
     }
 

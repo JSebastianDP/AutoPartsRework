@@ -96,16 +96,20 @@ public class ProductoDAO extends ConexionBD {
         }
 
     }
+
     
-    public ProductoVO listarId(int id) {
-        ProductoVO p = new ProductoVO();
-        String sql = "select * from producto where id_producto=" + id;
-        try {
-            conexion = con.obtenerConexion();
-            puente = conexion.prepareStatement(sql);
-            mensajero = puente.executeQuery();
-            while (mensajero.next()) {
-                p.setId(mensajero.getInt(1));
+    //Metodo para listar producto por Id, tener en cuenta que este metodo tambien se esta utilizando para listar la imagen
+    public ProductoVO buscar(String id_producto) {
+    ProductoVO p = null;
+    String sql = "SELECT * FROM producto WHERE id_producto= ?";
+    try {
+        conexion = this.obtenerConexion();
+        puente = conexion.prepareStatement(sql);
+        puente.setString(1, id_producto); // Asigna el valor del ID
+        mensajero = puente.executeQuery();
+        if (mensajero.next()) {
+                p = new ProductoVO();
+                p.setId_producto(mensajero.getString(1));
                 p.setNombre_producto(mensajero.getString(2));
                 p.setMarca_producto(mensajero.getString(3));
                 p.setCantidad_producto(mensajero.getInt(4));
@@ -114,11 +118,33 @@ public class ProductoDAO extends ConexionBD {
                 p.setPrecio_producto(mensajero.getDouble(6));
                 p.setDescripcion_producto(mensajero.getString(7));
                              
-            }
-        } catch (Exception e) {
         }
-        return p;
+    } catch (SQLException e) {
+        e.printStackTrace(); // Manejo de excepciones o lanzar una excepción personalizada
+    } finally {
+        if (mensajero != null) {
+            try {
+                mensajero.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (puente != null) {
+            try {
+                puente.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
-
+    return p;
+}
 
 }

@@ -96,5 +96,50 @@ public class ProveedorDAO extends ConexionBD {
         return registrado;
     }
     
+    //Metodo para buscar proveedor por id
+    public ProveedorVO buscar(String Id_proveedor) {
+    ProveedorVO p = null;
+    String sql = "SELECT * FROM proveedor WHERE id_proveedor = ?";
+    
+    try {
+        conexion = this.obtenerConexion();
+        puente = conexion.prepareStatement(sql);
+        puente.setString(1, Id_proveedor); // Asigna el valor del ID
+        mensajero = puente.executeQuery();
+        if (mensajero.next()) {
+            p = new ProveedorVO();
+            p.setId_proveedor(mensajero.getString(1));
+            p.setNombre_proveedor(mensajero.getString(2));
+            p.setTelefono_proveedor(mensajero.getString(3));
+            p.setCorreo_proveedor(mensajero.getString(4));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace(); // Manejo de excepciones o lanzar una excepción personalizada
+    } finally {
+        if (mensajero != null) {
+            try {
+                mensajero.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (puente != null) {
+            try {
+                puente.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (conexion != null) {
+            try {
+                conexion.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    return p;
+}  
+    
     
 }
