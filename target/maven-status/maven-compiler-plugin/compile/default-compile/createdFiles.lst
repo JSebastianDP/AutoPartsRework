@@ -20,8 +20,10 @@ ModeloDAO\InventarioDAO.class
 Controladores\Sesiones.class
 ModeloDAO\ProveedorDAO.class
 ModeloDAO\ProductoDAO.class
+Controladores\ControladorGenerarCompra.class
 Controladores\ControladorProveedores.class
 ModeloVO\InventarioVO.class
 com\mycompany\autopartsrework\resources\JavaEE8Resource.class
+ModeloVO\GenerarCompraVO.class
 ModeloDAO\VentaDAO.class
 Controladores\ControladorVentas.class
