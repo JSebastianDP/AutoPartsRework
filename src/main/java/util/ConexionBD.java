@@ -23,10 +23,7 @@ public class ConexionBD {
         userDB="root";
         passwordDB="";
         database="autopartsrework";
-        urlDB="jdbc:mysql://localhost:3306/"+database;
-        
-        //3 - Conectarse
-            System.out.println("Conectando a la base de datos " + database + "...");
+        urlDB="jdbc:mysql://localhost:3306/"+database;        
         try {
             Class.forName(driver).newInstance();
             conexion = DriverManager.getConnection(urlDB, userDB, passwordDB);

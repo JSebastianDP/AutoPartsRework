@@ -28,19 +28,7 @@ import util.Fecha;
 @WebServlet(name = "ControladorGenerarCompra", urlPatterns = {"/ControladorGenerarCompra"})
 public class ControladorGenerarCompra extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
+ 
         ProveedorVO pro = new ProveedorVO();
         ProveedorDAO pDAO = new ProveedorDAO();
         ProductoVO proVO = new ProductoVO();
@@ -51,16 +39,16 @@ public class ControladorGenerarCompra extends HttpServlet {
 
         int item = 0;
         String codigo;
-        int idproducto;
         String descripcion;
         Double precio;
         int cantidad;
         Double subtotal;
         Double totalpagar = 0.0;
-        String numeroserie;
         Fecha fechaSistem = new Fecha();
-        
-        
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         List compras = new ArrayList();
         compras = cDAO.Listar();
         String menu = request.getParameter("menu");
@@ -76,12 +64,10 @@ public class ControladorGenerarCompra extends HttpServlet {
                 case "BuscarProducto":
                     String Id_producto = request.getParameter("codigoproducto");
                     proVO.setId_producto(Id_producto);
-                    proVO = proDAO.buscar(Id_producto);
+                    proVO = proDAO.listarIdproducto(Id_producto);
                     request.setAttribute("p", pro);
                     request.setAttribute("producto", proVO);
                     request.setAttribute("lista", lista);
-                    request.setAttribute("totalpagar", totalpagar);
-
                     break;
                 case "Agregar":
                     request.setAttribute("p", pro);
@@ -107,16 +93,6 @@ public class ControladorGenerarCompra extends HttpServlet {
                     request.setAttribute("lista", lista);
 
                     break;
-//                case "deleteProducto":
-//                idproducto = Integer.parseInt(request.getParameter("id"));
-//                if (listaProductos != null) {
-//                    for (int j = 0; j < listaProductos.size(); j++) {
-//                        if (listaProductos.get(j).getIdProducto() == id_producto) {
-//                            listaProductos.remove(j);
-//                        }
-//                    }
-//                }
-//                break;
                 case "GenerarCompra":
                     c.setFecha_compra(fechaSistem.FechaBD());
                     c.setTotal_compra(totalpagar);
@@ -147,7 +123,6 @@ public class ControladorGenerarCompra extends HttpServlet {
                 request.getRequestDispatcher("Gerente/agregarCompra.jsp").forward(request, response);
                 break;
         }
-
 
     }
 

@@ -111,36 +111,30 @@
 
                         <div class="custom-form-group custom-d-flex">
                             <div class="custom-col-6 custom-d-flex">
-                                <input type="text" name="codigoproducto" value="${producto.id_producto}" id="custom-codigoproducto" class="custom-form-control"
+                                <input type="text" name="codigoproducto" value="${producto.getId_producto()}" class="custom-form-control"
                                        placeholder="Código producto">
                                 <button type="submit" name="accion" value="BuscarProducto" class="custom-btn custom-btn-outline-info">Buscar Producto</button>
                             </div>
                             <div class="custom-col-6">
-                                <input type="text" name="custom-nombreproducto" value="${producto.nombre_producto}" id="custom-nombreproducto" class="custom-form-control"
+                                <input type="text" name="nombreproducto" value="${producto.getNombre_producto()}" id="custom-nombreproducto" class="custom-form-control"
                                        placeholder="Nombre Producto" readonly>
                             </div>
                         </div>
-                            <div class="custom-form-group">
-                                <label for="custom-codigoproducto">Precio Producto</label>
-                            </div>
+                        <div class="custom-form-group">
+                            <label for="custom-codigoproducto">Precio Producto</label>
+                        </div>
                         <div class="custom-form-group custom-d-flex">
                             <div class="custom-col-6 custom-d-flex">
-                                <input type="text" name="Precio" id="custom-Precio" class="custom-form-control" value="${producto.getPrecio_producto()}" placeholder="$/.0.00">
+                                <input type="text" name="Precio" id="Precio" class="custom-form-control" value="${producto.getPrecio_producto()}" placeholder="$/.0.00">
+                            </div>                            
+                            <div class="custom-col-6 custom-d-flex">
+                                <input type="number" value="1" name="Cantidad" value="Buscar" class="custom-form-control">
                             </div>
-                            <div class="custom-col-6">
-                                <input type="number" min="0" name="Cantidad" id="custom-Cantidad" class="custom-form-control" value="1">
-                            </div>
-                            
-                            <div class="col-sm-6">
-                                            <input type="number" value="1" name="Cantidad" value="Buscar" class="btn btn-outline-info">
-                                        </div>
 
                         </div>
-
-                        <!-- Botón para agregar al carrito -->
                         <div class="custom-form-group">
-                            <input type="button" value="Agregar al Carrito" class="custom-btn">
-                        </div>
+                            <input type="submit" name="accion"  value="Agregar" class="custom-btn">
+                        </div>  
                     </div>
                 </form>
             </div>
@@ -149,26 +143,38 @@
         <div class="custom-container">
             <div class="custom-card">
                 <div class="custom-card-body">
+                    <div class="d-flex ml-auto col-sm-6">
+                        <label>Detalles de la compra</label>
+                    </div>
                     <table class="custom-table custom-table-hover">
                         <thead>
                             <tr>
                                 <th>Numero</th>
                                 <th>Codigo</th>
-                                <th>Descripcion</th>
+                                <th>Nombre</th>
                                 <th>Precio</th>
                                 <th>Cantidad</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody id="carrito-body">
-                            <!-- Aquí se agregarán las filas de productos en el carrito -->
+                            <c:forEach var="list" items="${lista}">
+                                <tr>
+                                    <td>${list.getItem()}</td>
+                                    <td>${list.id_producto_fk}</td>
+                                    <td>${list.getNombre()}</td>
+                                    <td>${list.getPrecio()}</td>
+                                    <td>${list.getCantidad()}</td>
+                                    <td>${list.getSubtotal()}</td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                 </div>
                 <div class="custom-card-footer custom-d-flex">
                     <div class="custom-col-4" style="display: flex; align-items: center;">
                         <input type="submit" name="accion" value="Cancelar" class="custom-btn custom-btn-danger" style="margin-right: 10px;">
-                        <input type="text" name="custom-txtTotal" id="custom-txtTotal" class="custom-form-control" value="">
+                        <input type="text" name="txtTotal" id="custom-txtTotal" class="custom-form-control" value="$${totalpagar}" readonly>
                     </div>
                     <div class="custom-col-8" style="text-align: right;">
                         <!-- Asegúrate de que este enlace envíe el carrito al servlet -->

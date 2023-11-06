@@ -115,28 +115,6 @@ public class ProveedorDAO extends ConexionBD {
         }
     } catch (SQLException e) {
         e.printStackTrace(); // Manejo de excepciones o lanzar una excepción personalizada
-    } finally {
-        if (mensajero != null) {
-            try {
-                mensajero.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (puente != null) {
-            try {
-                puente.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (conexion != null) {
-            try {
-                conexion.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
     }
     return p;
 }  
