@@ -178,7 +178,7 @@
                     </div>
                     <div class="custom-col-8" style="text-align: right;">
                         <!-- Asegúrate de que este enlace envíe el carrito al servlet -->
-                        <a href="<%= request.getContextPath()%>/ControladorCompras?menu=NuevaCompra&&accion=GenerarCompra" class="custom-btn custom-btn-success">
+                        <a href="<%= request.getContextPath()%>/ControladorGenerarCompra?menu=NuevaCompra&&accion=GenerarCompra" class="custom-btn custom-btn-success">
                             Generar Compra
                         </a>
                     </div>
