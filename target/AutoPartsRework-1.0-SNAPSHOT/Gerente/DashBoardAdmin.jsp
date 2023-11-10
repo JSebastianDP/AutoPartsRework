@@ -18,9 +18,7 @@
                 <div class="logo-name"><span>Auto</span>Parts</div>
             </a>
             <ul class="side-menu">
-                <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
                 <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
-                <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
                 <li><a href="<%= request.getContextPath()%>/ControladorUsuario?opcion=5"><i class='bx bx-group'></i>Users</a></li>
                 <li><a href="<%= request.getContextPath()%>/ControladorVentas?opcion=1"><i class='bx bx-shopping-bag'></i>Ventas</a></li>
                 <li><a href="<%= request.getContextPath()%>/ControladorCompras?opcion=1"><i class='bx bx-cart'></i>Compras</a></li>
