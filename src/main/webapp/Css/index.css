@@ -1,0 +1,87 @@
+/* styles.css */
+
+:root {
+    --light: #f6f6f9;
+    --primary: #1976D2;
+    --dark: #363949;
+    --danger: #D32F2F;
+}
+
+.navbar {
+    background: var(--dark);
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    color: var(--light);
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.navbar .logo-name {
+    margin-left: 10px;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 16px;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: var(--primary);
+}
+
+.navbar form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar input[type="search"] {
+    padding: 8px;
+    border: 1px solid var(--light);
+    border-radius: 4px;
+    font-size: 14px;
+    background: var(--dark);
+    color: var(--light);
+}
+
+.navbar .search-btn {
+    background: var(--primary);
+    color: var(--light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.navbar .bx {
+    font-size: 1.7rem;
+}
+
+.navbar .logout {
+    color: var(--danger);
+}
+
+/* Resto de tu CSS para el contenido de la página */
+
+.content {
+    margin-top: 56px;
+}
